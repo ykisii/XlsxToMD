@@ -2,7 +2,7 @@ import { assertEquals, assertExists, assertFalse } from "https://deno.land/std@0
 import { XlsxToMD } from "./main.ts";
 
 Deno.test("disp data", async () => {
-  await XlsxToMD.convert("test.xlsx", true).then((data)=> {
+  await XlsxToMD.convert("sample.xlsx", true).then((data)=> {
     console.log(data);
     assertFalse(false);
   }).catch((reason) => {
