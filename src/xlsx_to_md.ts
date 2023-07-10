@@ -12,25 +12,30 @@ export class XlsxToMD {
       try {
         const u8: Uint8Array = Deno.readFileSync(info.filePath);
         const wb = XLSX.read(u8);
-        this.getMDData(wb, info);
-        resolve(wb);
+        const data = this.toArray(wb, info);
+        resolve(data);
       } catch(e) {
         reject(e);
       }
     });
   }
-  private static getMDData(wb:any, info: SourceInfo) {
+
+  // deno-lint-ignore no-explicit-any
+  private static toArray(wb:any, info: SourceInfo): string[][] { 
     if (wb == null || info == null) throw new Error("parameter is null/undefined");
     const sheet = wb.Sheets[wb.SheetNames[info.sheetNumber ?? 0]];
-    const header = info.hederExists ?? false;
     const range = XLSX.utils.decode_range(sheet['!ref']);
+    const array: string[][] = [];
 
     for (let row = range.s.r; row <= range.e.r; row++) {
+      const cols = [];
       for (let col = range.s.c; col <= range.e.c; col++) {
         const pos = XLSX.utils.encode_cell({r:row, c:col});
         const cell = sheet[pos];
-        console.log(cell.v);
+        cols.push(cell.v);
       }
+      array.push(cols);
     }
+    return array;
   }
 }
