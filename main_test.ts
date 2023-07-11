@@ -3,7 +3,7 @@ import { XlsxToMD } from "./main.ts";
 
 Deno.test("file opened", async () => {
   await XlsxToMD.convert({filePath:"sample.xlsx", sheetNumber:0}).then((data)=> {
-    //console.log(data);
+    console.log(data);
     assertFalse(false);
   }).catch((reason) => {
     console.log(reason.name);
