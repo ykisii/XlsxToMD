@@ -12,8 +12,8 @@ export class XlsxToMD {
       try {
         const u8: Uint8Array = Deno.readFileSync(info.filePath);
         const wb = XLSX.read(u8);
-        const data = this.toArray(wb, info);
-        resolve(data);
+        const mdTable = this.toMDTable(this.toArray(wb, info), info);
+        resolve(mdTable);
       } catch(e) {
         reject(e);
       }
@@ -37,5 +37,13 @@ export class XlsxToMD {
       array.push(cols);
     }
     return array;
+  }
+
+  private static toMDTable(array: string[][], info: SourceInfo): string {
+    let table = "";
+    array.forEach((line) => {
+      table += '|' + line.join('|') + '|\n';
+    });
+    return table;
   }
 }
