@@ -53,4 +53,14 @@ export class XlsxToMD {
     });
     return table;
   }
+
+  private static createHeaderSeparator(firstRows: string[]) {
+    let separator = "";
+    let length = 0;
+    firstRows.forEach(v => {
+      length = Math.max(v.length, length);
+      separator += "|x";
+    });
+    separator += "|\n";
+  }
 }
