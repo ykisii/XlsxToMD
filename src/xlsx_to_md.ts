@@ -42,8 +42,14 @@ export class XlsxToMD {
 
   private static toMDTable(array: string[][], info: SourceInfo): string {
     let table = "";
-    array.forEach((line) => {
+    array.forEach((line, i) => {
       table += '|' + line.join('|') + '|\n';
+      if (i === 0) {
+        [...Array(line.length)].forEach((_)=> {
+          table += '|----';
+        });
+        table += '|\n';
+      }
     });
     return table;
   }
