@@ -2,8 +2,9 @@ import * as XLSX from "https://cdn.sheetjs.com/xlsx-0.18.3/package/xlsx.mjs";
 
 type SourceInfo = {
   filePath: string;
-  sheetNumber?: number | undefined;
-  hederExists?: boolean | undefined; 
+  sheetNumber?: number;
+  hederExists?: boolean;
+  alignment?: 'right' | 'left' | 'center';
 };
 
 export class XlsxToMD {
