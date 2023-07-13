@@ -1,3 +1,4 @@
+import  { sprintf } from "https://deno.land/std@0.38.0/fmt/mod.ts";
 import * as XLSX from "https://cdn.sheetjs.com/xlsx-0.18.3/package/xlsx.mjs";
 
 type SourceInfo = {
@@ -54,13 +55,26 @@ export class XlsxToMD {
     return table;
   }
 
-  private static createHeaderSeparator(firstRows: string[]) {
-    let separator = "";
+  private static createHeaderSeparator(firstRows: string[], info: SourceInfo) {
+    let separator = '';
     let length = 0;
     firstRows.forEach(v => {
       length = Math.max(v.length, length);
-      separator += "|x";
+      separator += '|x';
     });
-    separator += "|\n";
+    separator += '|\n';
+
+    let alignSymbol = '-'.repeat(length-1);
+    const alignment = info.alignment ?? 'right';
+
+    if (alignment == 'right') {
+      alignSymbol += ':';
+    }
+    else if (alignment == 'left') {
+      alignSymbol = ":" + alignSymbol;
+    }
+    else {
+      alignSymbol = ":" + alignSymbol + ":";
+    }
   }
 }
