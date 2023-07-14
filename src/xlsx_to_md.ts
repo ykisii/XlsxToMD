@@ -1,4 +1,3 @@
-import  { sprintf } from "https://deno.land/std@0.38.0/fmt/mod.ts";
 import * as XLSX from "https://cdn.sheetjs.com/xlsx-0.18.3/package/xlsx.mjs";
 
 type SourceInfo = {
