@@ -46,10 +46,7 @@ export class XlsxToMD {
     array.forEach((line, i) => {
       table += '|' + line.join('|') + '|\n';
       if (i === 0) {
-        [...Array(line.length)].forEach((_)=> {
-          table += '|----';
-        });
-        table += '|\n';
+        table += this.createHeaderSeparator(line, info);
       }
     });
     return table;
@@ -64,7 +61,7 @@ export class XlsxToMD {
     });
     separator += '|\n';
 
-    let alignSymbol = '-'.repeat(length-1);
+    let alignSymbol = '-'.repeat(length);
     const alignment = info.alignment ?? 'right';
 
     if (alignment == 'right') {
@@ -76,5 +73,6 @@ export class XlsxToMD {
     else {
       alignSymbol = ":" + alignSymbol + ":";
     }
+    return separator.replaceAll('x', alignSymbol);
   }
 }
