@@ -20,3 +20,33 @@ Deno.test("path is empty", async () => {
     assertFalse(false);
   });
 });
+
+Deno.test("default padding", async () => {
+  await XlsxToMD.convert({filePath:"sample.xlsx", sheetNumber:0}).then((data)=> {
+    console.log(data);
+    assertFalse(false);
+  }).catch((reason) => {
+    console.log(reason.name);
+    assertFalse(true);
+  });
+});
+
+Deno.test("right padding", async () => {
+  await XlsxToMD.convert({filePath:"sample.xlsx", sheetNumber:0, alignment:'right'}).then((data)=> {
+    console.log(data);
+    assertFalse(false);
+  }).catch((reason) => {
+    console.log(reason.name);
+    assertFalse(true);
+  });
+});
+
+Deno.test("center padding", async () => {
+  await XlsxToMD.convert({filePath:"sample.xlsx", sheetNumber:0, alignment:'center'}).then((data)=> {
+    console.log(data);
+    assertFalse(false);
+  }).catch((reason) => {
+    console.log(reason.name);
+    assertFalse(true);
+  });
+});

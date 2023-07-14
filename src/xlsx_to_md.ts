@@ -54,25 +54,22 @@ export class XlsxToMD {
 
   private static createHeaderSeparator(firstRows: string[], info: SourceInfo) {
     let separator = '';
-    let length = 0;
     firstRows.forEach(v => {
-      length = Math.max(v.length, length);
-      separator += '|x';
+      separator += '|';
+      let alignSymbol = '';
+      const alignment = info.alignment ?? 'left';
+      const length = (v.length-1) <= 0 ? 2 : (v.length); 
+      if (alignment == 'right') {
+        alignSymbol = '-'.repeat(length-1) + ':';
+      }
+      else if (alignment == 'left') {
+        alignSymbol = ':' + '-'.repeat(length-1);
+      } 
+      else {
+        alignSymbol = ':' + '-'.repeat(length-2 <= 0 ? 1:length-2) + ':';
+      }
+      separator += alignSymbol;
     });
-    separator += '|\n';
-
-    let alignSymbol = '-'.repeat(length);
-    const alignment = info.alignment ?? 'right';
-
-    if (alignment == 'right') {
-      alignSymbol += ':';
-    }
-    else if (alignment == 'left') {
-      alignSymbol = ":" + alignSymbol;
-    }
-    else {
-      alignSymbol = ":" + alignSymbol + ":";
-    }
-    return separator.replaceAll('x', alignSymbol);
+    return separator += '|\n';
   }
 }

@@ -5,6 +5,9 @@
     "https://deno.land/std@0.192.0/fmt/colors.ts": "d67e3cd9f472535241a8e410d33423980bec45047e343577554d3356e1f0ef4e",
     "https://deno.land/std@0.192.0/testing/_diff.ts": "1a3c044aedf77647d6cac86b798c6417603361b66b54c53331b312caeb447aea",
     "https://deno.land/std@0.192.0/testing/_format.ts": "a69126e8a469009adf4cf2a50af889aca364c349797e63174884a52ff75cf4c7",
-    "https://deno.land/std@0.192.0/testing/asserts.ts": "e16d98b4d73ffc4ed498d717307a12500ae4f2cbe668f1a215632d19fcffc22f"
+    "https://deno.land/std@0.192.0/testing/asserts.ts": "e16d98b4d73ffc4ed498d717307a12500ae4f2cbe668f1a215632d19fcffc22f",
+    "https://deno.land/std@0.38.0/fmt/colors.ts": "e34eb7d7f71ef64732fb137bf95dc5a36382d99c66509c8cef1110e358819e90",
+    "https://deno.land/std@0.38.0/fmt/mod.ts": "03f0b777f7ccf1c55d570ada5e5897bcd4153d2368b38b09acc32b76987b8e6c",
+    "https://deno.land/std@0.38.0/fmt/sprintf.ts": "b46ddf486642cfaed6859c5308f3a61d7964e1536d3bae5ccbc9adf6952b4538"
   }
 }
